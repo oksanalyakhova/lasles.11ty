@@ -29,6 +29,13 @@
   font-style: normal;
   font-display: swap;
 }
+.block-text .title, .block-text .text, .block-text li,
+.btn-theme,
+.media,
+.card {
+  opacity: 0;
+}
+
 .icon-arrow-left {
   width: 1.05em;
   height: 1em;
