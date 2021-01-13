@@ -14,7 +14,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/index.html",
+  "start_url": "https://vigorous-mclean-2901fd.netlify.app/",
   "background_color": "#FFFFFF",
   "display": "standalone",
   "scope": "/",
