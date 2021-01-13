@@ -43,7 +43,7 @@ layout: base.njk
                     {% include "svg/_features.njk" %}
                 </div>
                 <div class="features__content">
-                    {{ block.blockText('has-list', 'features', featuresTitle | safe, 'm', featuresText, items) }}
+                    {{ block.blockText('has-list', 'features', featuresTitle | safe, 'm', featuresText, data.features) }}
                 </div>
             </div>
         </div>
