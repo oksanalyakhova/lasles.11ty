@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- set pageTitle %}{% if title %}{{ title }} | {% endif %}{{ meta.siteName }}{% endset -%}
+{%- set pageDescription %}{% if description %}{{ description }}{% else %}{{ meta.siteDescription }}{% endif %}{% endset -%}
+<head>
+  <meta charset="utf-8"/>
+  <title>{{pageTitle}}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#fff"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="description" content="{{pageDescription}}"/>
+  <link rel="stylesheet" media="all" href="{{ '/css/style.css' | url }}"/>
+  <link rel="prefetch" href="/fonts/Rubik-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="prefetch" href="/fonts/Rubik-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="prefetch" href="/fonts/Rubik-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="{{ './index.js' | url }}"></script>
+</head>
+<body>
+
+  {% import "data/data.njk" as data %}
+  {% import "partials/_mixins.njk" as mixins %}
+  {% import "partials/_block-text.njk" as block %}
+
+  <div class="out">
+    {% include "partials/_header.njk" %}
+    <main>
+      {{ content | safe }}
+      {% block content %}{% endblock %}
+    </main>
+    {% include "partials/_footer.njk" %}
+  </div>
+
+  <script type="text/javascript" src="{{ '/js/app.js' | url }}"></script>
+
+</body>
+</html>

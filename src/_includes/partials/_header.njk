@@ -1,0 +1,32 @@
+<header class="header">
+  <div class="container">
+    <div class="header__wrapper">
+      <div class="header__logo">
+        <a href="#" class="logo">
+          {{mixins.icon('logo')}}
+          <span>{{ meta.siteName | safe}}</span>
+        </a>
+      </div>
+      <div class="header__nav">
+        {% include "./_menu.njk" %}
+      </div>
+      <div class="header__burger">
+        <div class="burger">
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="header__auth">
+        <div class="auth">
+          <div class="btn sign-in" data-popup-handler="signin">
+            {{ meta.siteSignin | safe }}
+          </div>
+          <div class="btn sign-up" data-popup-handler="signup">
+            {{ meta.siteSignup | safe }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav"></div>

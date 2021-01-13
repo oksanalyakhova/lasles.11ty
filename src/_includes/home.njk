@@ -1,0 +1,200 @@
+---
+layout: base.njk
+---
+
+{% block content %}
+    {% import "data/data.njk" as data %}
+    {% import "partials/_block-text.njk" as block %}
+    {% import "partials/_mixins.njk" as mixins %}
+
+    <section id="about" class="section hero">
+        <div class="container">
+            <div class="hero__wrapper">
+                <div class="hero__content">
+                    {{ block.blockText(null, 'hero', heroTitle | safe, 'l', heroText | safe) }}
+                    {{ mixins.linkTheme('m', null, heroBtn, heroLink) }}
+                </div>
+                <div class="hero__media media">
+                    {% include "svg/_hero.njk" %}
+                </div>
+            </div>
+            <div class="hero__results">
+                <div class="results card">
+                    {% for item in data.results %}
+                        <div class="results__item">
+                            <div class="icon-wrap">
+                                <svg class="icon icon-{{item.icon}}"><use xlink:href="img/sprite.svg#icon-{{item.icon}}"></use></svg>
+                            </div>
+                            <div class="content">
+                                <div class="data">{{ item.data }}</div>
+                                <div class="label">{{ item.label }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section features">
+        <div class="container">
+            <div class="features__wrapper">
+                <div class="features__media media">
+                    {% include "svg/_features.njk" %}
+                </div>
+                <div class="features__content">
+                    {{ block.blockText('has-list', 'features', featuresTitle | safe, 'm', featuresText, items) }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section pricing">
+        <div class="container">
+            <div class="pricing__wrapper">
+                {{ block.blockText(null, 'pricing', pricingTitle | safe, 'm', pricingText | safe) }}
+                <div class="plans-wrap">
+                    <div class="pricing__plans">
+                        <div class="plans card">
+                            <div class="plans__item plan">
+                                <div class="plan__media media">
+                                    {% include "svg/_free.njk" %}
+                                </div>
+                                <div class="plan__title">
+                                    Free Plan
+                                </div>
+                                <ul class="plan__list">
+                                    {% for item in data.freePlan %}
+                                        <li>
+                                            {{ item.text | safe }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <div class="plan__price">
+                                    {{ freePrice | safe }}
+                                </div>
+                                {{ mixins.linkTheme('s', 'btn-theme_reverse', selectBtn, freePlanLink) }}
+                            </div>
+                            <div class="plans__item plan">
+                                <div class="plan__media media">
+                                    {% include "svg/_standart.njk" %}
+                                </div>
+                                <div class="plan__title">
+                                    Standard Plan
+                                </div>
+                                <ul class="plan__list">
+                                    {% for item in data.standartPlan %}
+                                        <li>
+                                            {{ item.text | safe }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <div class="plan__price">
+                                    {{ standartPrice | safe }}
+                                </div>
+                                {{ mixins.linkTheme('s', 'btn-theme_reverse', selectBtn, standartPlanLink) }}
+                            </div>
+                            <div class="plans__item plan">
+                                <div class="plan__media media">
+                                    {% include "svg/_premium.njk" %}
+                                </div>
+                                <div class="plan__title">
+                                    Premium Plan
+                                </div>
+                                <ul class="plan__list">
+                                    {% for item in data.premiumPlan %}
+                                        <li>
+                                            {{ item.text | safe }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <div class="plan__price">
+                                    {{ premiumPrice | safe }}
+                                </div>
+                                {{ mixins.linkTheme('s', 'btn-theme_reverse', selectBtn, premiumPlanLink) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <div class="testimonials__wrapper">
+                {{ block.blockText(null, 'testimonials', testimonialsTitle | safe, 'm', testimonialsText | safe) }}
+                <div class="testimonials__map media">
+                    {% include "svg/_map.njk" %}
+                </div>
+                <div class="testimonials__clients">
+                    <div class="clients card">
+                        {% for item in data.clients %}
+                            <div class="clients__item">
+                                <img src="img/{{ item.src }}.png" alt="{{ item.alt }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="help" class="section help">
+        <div class="container">
+            <div class="help__wrapper">
+                {{ block.blockText(null, 'help', helpTitle | safe, 'm', helpText | safe) }}
+                <div class="help__slider card">
+                    <div class="help-slider-container swiper-container">
+                        <div class="help-slider swiper-wrapper">
+                            {% for item in data.customers %}
+                                <div class="help-slider__slide swiper-slide">
+                                    <div class="swiper-slide__help-card help-card">
+                                        <div class="help-card__avatar">
+                                            <img src="img/{{ item.src }}.png" alt="{{ item.name }}">
+                                        </div>
+                                        <div class="help-card__name">
+                                            {{ item.name }}
+                                        </div>
+                                        <div class="help-card__location">
+                                            {{ item.location }}
+                                        </div>
+                                        <div class="help-card__rating rating">
+                                            <span class="rating__value">
+                                              {{ item.rating }}
+                                            </span>
+                                            {% if item.rating >= 4 %}
+                                                <span class="rating__icon height">
+                                                    {{mixins.icon('star')}}
+                                                  </span>
+                                            {% elif item.rating < 4 %}
+                                                <span class="rating__icon">
+                                                    {{mixins.icon('star')}}
+                                                  </span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="help-card__text text text_m">
+                                            "{{ item.text | safe }}".
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="help-slider-nav">
+                        <div class="help-slider-nav__pagination swiper-pagination"></div>
+                        <div class="help-slider-nav__buttons">
+                            <div class="help-slider-nav__button help-prev swiper-button-prev">
+                                {{ mixins.icon('arrow-left') }}
+                            </div>
+                            <div class="help-slider-nav__button help-next swiper-button-next">
+                                {{ mixins.icon('arrow-right') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+.header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 119px
+  z-index: 999
+  background-color: $c-white
+  +trans(height, .4s)
+  +r(1023)
+    height: 76px
+
+  &.is-scrolled
+    height: 89px
+    +r(1023)
+      height: 56px
+
+  .container,
+  &__wrapper
+    height: 100%
+
+  &__wrapper
+    display: flex
+    align-items: center
+
+  &__logo
+    margin-right: 37px
+
+  &__nav
+    margin: 0 auto
+    +r(1023)
+      display: none
+
+    .menu
+      display: flex
+
+      & > * + *
+        margin: 0 0 0 40px
+
+      &__link
+        font-family: $f-regular
+        font-size: 16px
+        line-height: 19px
+        color: $c-text
+        +trans(color)
+
+        &.is-active
+          color: $c-theme
+
+  &__auth
+    margin-left: 30px
+    +r(1023)
+      margin-left: 0
+      display: none
+
+    .auth
+      display: flex
+      align-items: center
+
+      & > * + *
+        margin: 0 0 0 30px
+
+  &__burger
+    display: none
+    +r(1023)
+      margin-left: auto
+      display: block
+
+    .burger
+      +r(1023)
+        width: 28px
+
+      &.is-active
+        .line
+          &:nth-child(1)
+            transform: rotate(-45deg) translate(-3px, 2.5px)
+
+          &:nth-child(2)
+            transform: rotate(45deg) translate(-3px, -2.5px)
+
+      & > * + *
+        +r(1023)
+          margin: 5px 0 0
+
+      .line
+        +r(1023)
+          width: 100%
+          height: 3px
+          background-color: $c-text-dark
+          border-radius: 3px
+          transform: rotate(0deg) translate(0, 0)
+          +trans(transform)
+
