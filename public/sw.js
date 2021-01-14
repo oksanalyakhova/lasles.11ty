@@ -1,9 +1,9 @@
 const CACHE_NAME = 'my-site-cache-v1';
 const urlsToCash = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/app.js'
+  './',
+  './index.html',
+  './css/style.css',
+  './js/app.js'
 ]
 
 self.addEventListener('install', event => {
